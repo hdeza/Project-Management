@@ -1,5 +1,13 @@
+import EmptyProject from "./components/EmptyProject";
+import ProjectSide from "./components/ProjectSide";
+
 function App() {
-  return <></>;
+  return (
+    <div className="flex">
+      <ProjectSide />
+      <EmptyProject />
+    </div>
+  );
 }
 
 export default App;
