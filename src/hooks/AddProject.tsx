@@ -24,6 +24,7 @@ export default function AddProject() {
       return;
     }
     console.log(data);
+    window.location.reload();
   };
 
   const handleClickOpen = () => {

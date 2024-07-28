@@ -19,9 +19,7 @@ export default function Project({ id }: { id: number }) {
       if (fetchError) {
         console.error("Fetch error: " + fetchError);
       } else {
-        console.log(Proyectos);
         setProyecto(Proyectos[0]);
-        console.log(typeof Proyectos[0].fecha);
       }
     }
     fetchData();
