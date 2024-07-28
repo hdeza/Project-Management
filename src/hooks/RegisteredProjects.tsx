@@ -16,17 +16,18 @@ export default function RegisteredProjects({
   setNoProjectSelected: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   const [projects, setProjects] = useState<Project[]>([]);
-  useEffect(() => {
-    async function fetchData() {
-      const { data: Proyectos, error: fetchError } = await supabase
-        .from("Proyectos")
-        .select("*");
-      if (fetchError) {
-        console.error("Error fetching projects", fetchError);
-      } else {
-        setProjects(Proyectos);
-      }
+  const fetchData = async () => {
+    const { data: Proyectos, error: fetchError } = await supabase
+      .from("Proyectos")
+      .select("*");
+    if (fetchError) {
+      console.error("Error fetching projects", fetchError);
+    } else {
+      setProjects(Proyectos);
     }
+  };
+
+  useEffect(() => {
     fetchData();
   }, []);
 
