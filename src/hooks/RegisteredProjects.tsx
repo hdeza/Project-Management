@@ -5,10 +5,16 @@ interface Project {
   id: number;
   nombre: string;
   descripcion: string;
-  fecha_creacion: Date;
+  fecha_creacion: string;
 }
 
-export default function RegisteredProjects() {
+export default function RegisteredProjects({
+  setIdSelected,
+  setNoProjectSelected,
+}: {
+  setIdSelected: React.Dispatch<React.SetStateAction<number>>;
+  setNoProjectSelected: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const [projects, setProjects] = useState<Project[]>([]);
   useEffect(() => {
     async function fetchData() {
@@ -29,6 +35,10 @@ export default function RegisteredProjects() {
       <button
         className="border-b opacity-70 border-gray-600 w-full hover:bg-gray-800 py-3"
         key={project.id}
+        onClick={() => {
+          setIdSelected(project.id);
+          setNoProjectSelected(false);
+        }}
       >
         {project.nombre}
       </button>
